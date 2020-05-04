@@ -1,8 +1,9 @@
 'use strict'
 
-class Pacient {
-  constructor(nom, malaltia) {
-    nom = nom;
+class Pacient extends Persona{
+  constructor(nomRebut, cognomRebut, nifRebut, malaltia) {
+  	//nom = nom;
+    nomRebut = nomRebut;
     malaltia = malaltia;
   }
 }
