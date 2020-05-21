@@ -1,7 +1,7 @@
 'use strict'
 
 class Hospital {
-  constructor(nom, maximPacients, maximMetges) {
+  constructor(nom, maximPacients) {
     nomHospital = nom;
     maximPacients = maximPacients;
     pacientsIngressats = [];

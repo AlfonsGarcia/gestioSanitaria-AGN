@@ -15,7 +15,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
  PER MODAL -->
 
-
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
@@ -24,10 +23,11 @@
     <script src="./js/classes/Hospital.js"></script>
     <script src="./js/classes/Metge.js"></script>
     <script src="./js/classes/Pacient.js"></script>
+
    
   </head>
   <body>
-	<a href="interficie.html">Pàgina interfie html</a>
+<a href="interficies.html">Link interficies</a>
     <!-- INICI container -->
     <div class="container">
       <h1  class="text-center mt-3 mb-3" >Aplicació gestió Sanitària</h1>
@@ -137,7 +137,30 @@
              <!-- w-100  = width: 100% -->
             <h2 class="text-center">Pacients</h2>
             <p class="text-center">Introdueix les dades del pacients que vols ingressar:</p>
-            <div id="dadesPacient"></div>
+            <div id="dadesPacient">
+              <div class="row" id="dadesGestioPacient">
+                <div class="col mb-3">
+                  <label for="nomPacientGestio" class="font-weight-bold">Nom: </label>
+                  <input type="text" id="nomPacient" name="nomPacient"  title="Introdueix el nom del Pacient."
+                  class="form-control" required minlength="1" maxlength="100">
+                </div>
+                <div class="col mb-3">
+                  <label for="cognomPacientGestio" class="font-weight-bold">Cognom: </label>
+                  <input type="text" id="cognomPacient" name="cognomPacient"  title="Introdueix el cognom del Pacient."
+                  class="form-control" required minlength="1" maxlength="100">
+                </div>
+                <div class="col mb-3">
+                  <label for="nifPacientGestio" class="font-weight-bold">NIF: </label>
+                  <input type="text" id="nifPacient" name="nifPacient"  title="Introdueix el NIF del Pacient."
+                  class="form-control" required minlength="1" maxlength="100">
+                </div>
+                <div class="col mb-3">
+                  <label for="malaltia" class="font-weight-bold">Malaltia: </label>
+                  <select id="malaltia" name="malaltia" class="form-control" required minlength="1" maxlength="100">
+                </div>
+
+              </div>
+            </div>
             <div class="text-center">
               <button type="button" class="btn btn-primary mt-4" onClick="ingressarPacients()">Ingressar</button>
               <button type="button" class="btn btn-primary mt-4" onClick="ocultaGestioPacients(this)">Torna</button>

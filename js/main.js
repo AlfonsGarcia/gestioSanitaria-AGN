@@ -1,5 +1,6 @@
 'use strict'
 
+
 const eleID_divEspaiModal = document.getElementById("divEspaiModal");
 
 const eleID_barra_missatges = document.getElementById("divBarraMissatges");
@@ -229,4 +230,6 @@ function ocultaGestioPacients(objecteRebut){
       eleID_divControls.classList.toggle("d-none");
       mostraBotons();
    }
-   
+
+
+
