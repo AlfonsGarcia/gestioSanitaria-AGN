@@ -1,4 +1,5 @@
 'use strict'
+var hospital = null;
 
 const eleID_divEspaiModal = document.getElementById("divEspaiModal");
 
@@ -230,3 +231,44 @@ function ocultaGestioPacients(objecteRebut){
       mostraBotons();
    }
    
+   function crearHospital() {
+      var nom = document.getElementById("inputNomHospital").value.toString();
+      var maximPacients = parseInt(document.getElementById("maximPacientsHospital").value);
+      console.log(nom, maximPacients);
+
+      hospital = new Hospital(nom, maximPacients);
+
+      document.getElementById("titol").innerHTML=nom;
+      
+   }
+
+   function ingressarPacients() {
+
+      var nom = "";
+      var cognom = "";
+      var nif = "";
+      var malaltia = "";
+      var pacient = 0;
+    
+      if( pacient < hospital.maximPacients) {
+        nom = document.getElementById("nomPacient").value.toString();
+        cognom = document.getElementById("cognomPacient").value.toString();
+        nif = document.getElementById("nifPacient").value.toString();
+        malaltia = document.getElementById("malaltia").value.toString();
+        console.log("si");
+
+
+        if (nom!="" && cognom!="" && nif!="" && malaltia!="") {
+          if (hospital != null) {
+
+              hospital.ingressarPacients(new Pacient(nom, cognom, nif, malaltia));
+              
+          }
+          document.getElementById("nomPacient").innerHTML ="";
+              document.getElementById("cognomPacient").innerHTML ="";
+              document.getElementById("nifPacient").innerHTML ="";
+              document.getElementById("malaltia").innerHTML ="";
+        }
+      }
+      pacient ++;
+   }
