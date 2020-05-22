@@ -1,0 +1,73 @@
+#box{
+height: auto;
+    padding: 5px;
+    border-radius: 2px;
+    line-height: 20px;
+    box-shadow: 15px;
+}
+
+#circle{
+	width: 80%;
+    border-radius: 400px;
+    background-color: none;
+    padding-bottom: 30px;
+    border: 4px solid #4dffff;
+    margin-left: 10%;
+    margin-top: 5%;
+
+}
+#caixa{
+	width: 60%;
+    margin-left: 20%;
+    margin-top: 3%;
+}
+/*
+#divIdHospital{
+    width: 80%;
+    margin-left: 10%;
+}
+*/
+
+#butHospM{
+   
+    position: absolute;
+    margin-top: 12%;
+    margin-left: -14%;
+    font-size: 16pt;
+}
+#butPacM{
+   
+    position: absolute;
+    margin-top: 16%;
+    margin-left: -15%;
+    font-size: 16pt;
+}
+#butMalM{
+    
+    position: absolute;
+    margin-top: 20%;
+    margin-left: -16%;
+    font-size: 16pt;
+}
+#butMetgM{
+   
+    position: absolute;
+    margin-top: 24%;
+    margin-left: -16%;
+    font-size: 16pt;
+}
+#contrast{
+    margin-top: -24%;
+    margin-left: 46%;
+}
+#contrast1{
+    margin-top: -24%;
+    margin-left: 46%;
+}
+input{
+    margin-top: 5%;
+}
+
+
+
+
