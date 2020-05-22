@@ -8,4 +8,3 @@ class Pacient extends Persona{
     this.malaltia = malaltia;
   }
 }
-
