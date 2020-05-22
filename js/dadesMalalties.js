@@ -1,6 +1,5 @@
 'use strict'
 
-function cargarMalalties(){
     const llistaMalalties = ['Alzheimer','Anells vasculars','Atrèsia pulmonar amb comunicació intraventricular',
     'Bacteria Gonorrea','Cadena de ADN','Canal auriculoventricular','Canal auriculoventricular parcial',
     'Càncer','Càncer de mama','Cardiopatia familiar','Coartació de l’aorta i hipoplàsia de l’arc aòrtic',
@@ -26,17 +25,4 @@ function cargarMalalties(){
     'Tumor extraocular en la infància (Rabdomiosarcoma)',
     'Tumor intraocular en la infància (Retinoblastoma)','Tumors d’òrbita','Ventricle únic',
     'Virus del papil·loma humà (VPH)'];
-}
-/*
-    const selectMalaties = document.getElementById("malaltia"); //seleccionem el select
 
-    for (let index = 0; index < llistaMalalties.length; index++) {
-        const option = document.createElement("option"); //Creamos la "opció"
-        option.innerHTML = llistaMalalties[index]; //fiquem les malalties a "opció"
-        selectMalaties.appendChild(option); //fiquem "opció" al select
-        
-    }
-}
-cargarMalalties();
-
-*/

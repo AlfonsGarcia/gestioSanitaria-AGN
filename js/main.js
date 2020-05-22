@@ -1,5 +1,4 @@
 'use strict'
-
 var hospital = null;
 
 const eleID_divEspaiModal = document.getElementById("divEspaiModal");
@@ -12,9 +11,7 @@ const eleID_divHospital = document.getElementById("divHospital");
 const eleID_divPacient = document.getElementById("divPacient");
 
 const eleID_divControls = document.getElementById("divControls");
-
 const eleID_divGestio = document.getElementById("divTractament");
-
 
 const eleID_btnGestHospitals = document.getElementById("btnGestHospitals");
 const eleID_btnGestPacients = document.getElementById("btnGestPacients");
@@ -24,7 +21,6 @@ const eleID_btnGestMetges = document.getElementById("btnGestMetges");
 const eleID_btnGestAplicacio = document.getElementById("btnGestAplicacio");
 
 const eleID_h2ResutltatFormControls = document.getElementById("h2ResutltatFormControls");
-
 
 const etCapMalaltia = "capMalaltia";
 
@@ -188,7 +184,6 @@ function eliminaClass(elementRebut, nomClass) {
       eleID_divControls.classList.toggle("d-none");
       amagaBotons();
    }
-
     function mostraGestioMetges(objecte){
           mostraMissatge(0);
     }
@@ -196,7 +191,6 @@ function eliminaClass(elementRebut, nomClass) {
     function mostraGestioMalaties(objecte){
        mostraMissatge(0);
     }
-
 
 function mostraGestioHospital(objecte){
       document.getElementById('tancaDivHospital').onclick = function tanca() {
@@ -207,9 +201,7 @@ function mostraGestioHospital(objecte){
       eleID_divPresentacio.classList.toggle("d-none");
       eleID_divHospital.classList.toggle("d-none");
       amagaBotons();
-
 }
-
 
 function ocultaGestioHospital(objecteRebut){
             eleID_divPresentacio.classList.toggle("d-none");
@@ -218,13 +210,11 @@ function ocultaGestioHospital(objecteRebut){
    }
 
 function mostraGestioPacients(objecteRebut){
-
       document.getElementById('tancaDivPacient').onclick = function tanca() {
             eleID_divPresentacio.classList.toggle("d-none");
             eleID_divPacient.classList.toggle("d-none");
             mostraBotons();
       }
-
       if (!conteClass(eleID_divPacient,"d-none")) {
             afegirClass(eleID_divPacient,"d-none");
       }
@@ -244,7 +234,6 @@ function ocultaGestioPacients(objecteRebut){
       eleID_divControls.classList.toggle("d-none");
       mostraBotons();
    }
-
    
 
    function  validaQueNoEsBuit ( cadenaAValidar )  {
@@ -261,7 +250,7 @@ function ocultaGestioPacients(objecteRebut){
       var maximPacients = parseInt(document.getElementById("maximPacientsHospital").value);
     
       if (nom !== "" && maximPacients > 0) {
-            document.getElementById("titol").innerHTML=nom;
+           /* document.getElementById("titol").innerHTML=nom;*/
             hospital = new Hospital(nom, maximPacients); 
           eleID_divHospital.classList.toggle("d-none");
     
@@ -442,6 +431,5 @@ function ingressarPacients() {
     
       return llitsBuits;
     }
-
 
 
