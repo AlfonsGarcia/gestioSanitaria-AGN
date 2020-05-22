@@ -250,7 +250,7 @@ function ocultaGestioPacients(objecteRebut){
       var maximPacients = parseInt(document.getElementById("maximPacientsHospital").value);
     
       if (nom !== "" && maximPacients > 0) {
-           /* document.getElementById("titol").innerHTML=nom;*/
+           document.getElementById("titol").innerHTML=nom;
             hospital = new Hospital(nom, maximPacients); 
           eleID_divHospital.classList.toggle("d-none");
     
@@ -414,7 +414,7 @@ function ingressarPacients() {
       document.getElementById("dadesGestioPacient" + llitPacient.toString()).remove();
     
       if (totsLlitsBuits())
-        dadesGestio.innerHTML = ('<p class="text-center">L\'Hospital ' + hospital.nom + ' no té cap pacient ingressat en aquests moments.</p>' +
+        dadesGestio.innerHTML = ('<p class="text-center">L\'Hospital ' + hospital.nomRebut + ' no té cap pacient ingressat en aquests moments.</p>' +
         '<div class="text-center">' +
           '<button type="button" class="btn btn-primary mt-4" onClick="window.location.reload()">Tornar a començar</button>' +
         '</div>');
