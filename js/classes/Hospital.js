@@ -1,14 +1,12 @@
 'use strict'
 
 class Hospital {
-  constructor(nom, maximPacients) {
-    nomHospital = nom;
-    maximPacients = maximPacients;
-    pacientsIngressats = [];
-    ingressarPacient = ingressarPacient;
-    donarDaltaPacient = donarDaltaPacient;
-    morirPacient = morirPacient;
-  }
+
+    constructor(nomRebut, maximPacientsRebuts, maximMetges) {
+    this.nomHospital = nomRebut;
+    this.maximPacients = maximPacientsRebuts;
+    this.pacientsIngressats = [];
+    }
   
     ingressarPacient(pacient) {
       if (pacient != null && (this.pacientsIngressats.length < this.maximPacients))
@@ -16,13 +14,16 @@ class Hospital {
     }
 
     donarDaltaPacient(llitPacient) {
-      alert("S'ha donat d'alta el pacient " + this.pacientsIngressats[llitPacient].nomHospital + " de la malaltia " + this.pacientsIngressats[llitPacient].malaltia);
+
+      alert("S'ha donat d'alta el pacient " + this.pacientsIngressats[llitPacient].nom + " de la malaltia " + this.pacientsIngressats[llitPacient].malaltia);
+
       this.pacientsIngressats[llitPacient] = {};
     }
 
     morirPacient(llitPacient) {
-      alert("Encara que s'ha fet tot el que s'ha pogut, el pacient " + this.pacientsIngressats[llitPacient].nomHospital + " ha mort de la malaltia " + this.pacientsIngressats[llitPacient].malaltia);
+
+      alert("Encara que s'ha fet tot el que s'ha pogut, el pacient " + this.pacientsIngressats[llitPacient].nom + " ha mort de la malaltia " + this.pacientsIngressats[llitPacient].malaltia);
       this.pacientsIngressats[llitPacient] = {};
     }
-
 }
+

@@ -1,4 +1,5 @@
 'use strict'
+
 function cargarMalalties(){
     const llistaMalalties = ['Alzheimer','Anells vasculars','Atrèsia pulmonar amb comunicació intraventricular',
     'Bacteria Gonorrea','Cadena de ADN','Canal auriculoventricular','Canal auriculoventricular parcial',
