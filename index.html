@@ -23,6 +23,7 @@
     <script src="./js/classes/Hospital.js"></script>
     <script src="./js/classes/Metge.js"></script>
     <script src="./js/classes/Pacient.js"></script>
+    <script src="./js/dadesMalalties.js"></script>
 
    
   </head>
@@ -134,6 +135,7 @@
           <!-- ------------------------------------------------------------------------------------ -->
           <!-- INICI divPacients -->
           <div class="w-100 mx-auto align-items-center border mt-8 mb-8 p-4 rounded shadow bg-white d-none" id="divPacient">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close" id="tancaDivPacient"><h3>&times;</h3></a>
              <!-- w-100  = width: 100% -->
             <h2 class="text-center">Pacients</h2>
             <p class="text-center">Introdueix les dades del pacients que vols ingressar:</p>
@@ -164,7 +166,7 @@
             </div>
             <div class="text-center">
               <button type="button" class="btn btn-primary mt-4" onclick="ingressarPacients()">Ingressar</button>
-              <button type="button" class="btn btn-primary mt-4" onclick="ocultaGestioPacients(this)">Torna</button>
+              <!--<button type="button" class="btn btn-primary mt-4" onclick="ocultaGestioPacients(this)">Torna</button>-->
             </div>
           </div>
           <!-- FINAL divPacients -->
