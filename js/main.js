@@ -1,4 +1,5 @@
 'use strict'
+var hospital = null;
 
 const eleID_divEspaiModal = document.getElementById("divEspaiModal");
 
@@ -10,6 +11,7 @@ const eleID_divHospital = document.getElementById("divHospital");
 const eleID_divPacient = document.getElementById("divPacient");
 
 const eleID_divControls = document.getElementById("divControls");
+const eleID_divGestio = document.getElementById("divTractament");
 
 const eleID_btnGestHospitals = document.getElementById("btnGestHospitals");
 const eleID_btnGestPacients = document.getElementById("btnGestPacients");
@@ -19,6 +21,8 @@ const eleID_btnGestMetges = document.getElementById("btnGestMetges");
 const eleID_btnGestAplicacio = document.getElementById("btnGestAplicacio");
 
 const eleID_h2ResutltatFormControls = document.getElementById("h2ResutltatFormControls");
+
+const etCapMalaltia = "capMalaltia";
 
 /*
 taula_missatges[0][intTitol]="No habilitat"
@@ -180,8 +184,6 @@ function eliminaClass(elementRebut, nomClass) {
       eleID_divControls.classList.toggle("d-none");
       amagaBotons();
    }
-
-
     function mostraGestioMetges(objecte){
           mostraMissatge(0);
     }
@@ -189,8 +191,6 @@ function eliminaClass(elementRebut, nomClass) {
     function mostraGestioMalaties(objecte){
        mostraMissatge(0);
     }
-    
-
 
 function mostraGestioHospital(objecte){
       document.getElementById('tancaDivHospital').onclick = function tanca() {
@@ -201,7 +201,7 @@ function mostraGestioHospital(objecte){
       eleID_divPresentacio.classList.toggle("d-none");
       eleID_divHospital.classList.toggle("d-none");
       amagaBotons();
-   }
+}
 
 function ocultaGestioHospital(objecteRebut){
             eleID_divPresentacio.classList.toggle("d-none");
@@ -210,6 +210,11 @@ function ocultaGestioHospital(objecteRebut){
    }
 
 function mostraGestioPacients(objecteRebut){
+      document.getElementById('tancaDivPacient').onclick = function tanca() {
+            eleID_divPresentacio.classList.toggle("d-none");
+            eleID_divPacient.classList.toggle("d-none");
+            mostraBotons();
+      }
       if (!conteClass(eleID_divPacient,"d-none")) {
             afegirClass(eleID_divPacient,"d-none");
       }
@@ -230,3 +235,201 @@ function ocultaGestioPacients(objecteRebut){
       mostraBotons();
    }
    
+
+   function  validaQueNoEsBuit ( cadenaAValidar )  {
+    if  ( cadenaAValidar . value == ""  ||  cadenaAValidar . value == 'undefined' )  {
+      mostraMissatge ( `El campamento <b> $ { cadenaAValidar . name } </b> no pot quedar-se en blanc!` ) ;
+      // espera (3000); // 3 segundos en milisegundos
+      //eleID_barra_missatges.hidden=false;
+      //eleID_barra_missatges.classList.toggle("d-none ");
+    } 
+  }
+
+   function crearHospital() {
+      var nom = document.getElementById("inputNomHospital").value;
+      var maximPacients = parseInt(document.getElementById("maximPacientsHospital").value);
+    
+      if (nom !== "" && maximPacients > 0) {
+            document.getElementById("titol").innerHTML=nom;
+            hospital = new Hospital(nom, maximPacients); 
+          eleID_divHospital.classList.toggle("d-none");
+    
+    
+          var cadenaFilaPacient_1,cadenaFilaPacient_2,cadenaFilaPacient_3;
+       /* Creació de tres cadenes cadenaFilaPacient_1, cadenaFilaPacient_2 i cadenaFilaPacient_3
+       ** per faciliar la creació dels <div class="row"> que es crea per a cada pacient.
+       ** */
+       
+          var objSelect;
+       /* Creació d'un objecte llisa desplegable, que ompliré amb tots els elements
+       ** de la matriu que acabo de crear llistaMalalties 
+       ** */
+       
+        objSelect=`<option value=\"${etCapMalaltia}\">------ Escull un malaltia ------</option>`;
+        for (var indexMalaltia=0; indexMalaltia<llistaMalalties.length; indexMalaltia++) {
+            objSelect+=`<option value=\"${indexMalaltia.toString()}\">${llistaMalalties[indexMalaltia]}</option>`;  
+        }
+        objSelect+='</select>';
+    
+        var htmlINICIDivClassRow = '<div class="row">';
+        var htmlFINALDivClassRow =  '</div> <!-- <div class="row"> -->';
+        
+        var htmlINICIDivClassCol = '<div class="col mb-3">';
+        var htmlFINALDivClassCol = '</div> <!-- <div class="col mb-3"> -->';
+
+        var htmlINICIDivClassCol = '<div class="col mb-3">';
+        var htmlFINALDivClassCol = '</div> <!-- <div class="col mb-3"> -->';
+
+        var htmlINICIDivClassCol = '<div class="col mb-3">';
+        var htmlFINALDivClassCol = '</div> <!-- <div class="col mb-3"> -->';
+    
+    
+    
+        var htmlINICIInputNomPacient = `<input type=\"text\" title=\"Entra el nom del pacient!\" name=\"Nom Pacient\" 
+                                      onblur=\"validaQueNoEsBuit(this)\" placeHolder=\"Nom pacient\" id=\"nomPacient`;
+
+      var htmlINICIInputCognomPacient = `<input type=\"text\" title=\"Entra cognom del pacient!\" name=\"Gognom Pacient\" 
+                                    onblur=\"validaQueNoEsBuit(this)\" placeHolder=\"Cognom pacient\" id=\"cognomPacient`;
+
+      var htmlINICIInputNIFPacient = `<input type=\"text\" title=\"Entra el NIF del pacient!\" name=\"NIF Pacient\" 
+                                    onblur=\"validaQueNoEsBuit(this)\" placeHolder=\"NIF pacient\" id=\"NIFPacient`;
+    
+        var htmlINICIInputSelect = '<select id="malaltia';
+        var htmlFINALClassFormCtrl = '" class="form-control" required minlength="1" maxlength="100">';
+    
+          for (var pacient = 0; pacient < maximPacients; pacient++) {
+            var cadPacient = pacient.toString();
+    
+            var htmlLabelNomPacient = `<label for=\"nomPacient${pacient}\" class=\"font-weight-bold\">Nom pacient:</label>`;
+            var htmlLabelCognomPacient = `<label for=\"cognomPacient${pacient}\" class=\"font-weight-bold\">Gognom pacient:</label>`;
+            var htmlLabelNIFPacient = `<label for=\"NIFPacient${pacient}\" class=\"font-weight-bold\">Gognom pacient:</label>`;
+            var htmlLabelNomMalaltia = `<label for=\"nomMalaltiaPacient${pacient}\"  class=\"font-weight-bold\">Malaltia de pacient:</label>`;
+    
+            document.getElementById("dadesPacient").innerHTML += ( '' +
+              htmlINICIDivClassRow + 
+                htmlINICIDivClassCol + 
+                    htmlLabelNomPacient +
+                      htmlINICIInputNomPacient + cadPacient + htmlFINALClassFormCtrl +
+                  htmlFINALDivClassCol + 
+                  htmlINICIDivClassCol + 
+                    htmlLabelCognomPacient +
+                      htmlINICIInputCognomPacient + cadPacient + htmlFINALClassFormCtrl +
+                  htmlFINALDivClassCol + 
+                  htmlINICIDivClassCol + 
+                    htmlLabelNIFPacient +
+                      htmlINICIInputNIFPacient + cadPacient + htmlFINALClassFormCtrl +
+                  htmlFINALDivClassCol + 
+                  htmlINICIDivClassCol +
+                    htmlLabelNomMalaltia + 
+                      htmlINICIInputSelect + cadPacient + htmlFINALClassFormCtrl +
+                        objSelect +
+                  htmlFINALDivClassCol +
+                htmlFINALDivClassRow);
+          }
+          eleID_divPacient.classList.toggle("d-none");
+      } else {
+        //barra_missatges
+        eleID_barra_missatges.classList.toggle("d-none");
+        if (nom !== "") {
+            eleID_a_text_missatge.innerText = "Cal que entris un nombre al camp màxim pacients!";
+        } else if(maximPacients > 0){  
+            eleID_a_text_missatge.innerText = "Cal que entris un nom al camp Hospital!";
+        } else {
+            eleID_a_text_missatge.innerText = "Cal que entris un nom al camp Hospital i un nombre al camp màxim pacients!";
+        }
+      }
+      
+    }
+
+
+function ingressarPacients() {
+
+      var nom = "";
+      var cognom = "";
+      var nif = "";
+      var malaltia = "";
+    
+      for (var pacient = 0; pacient < hospital.maximPacients; pacient++) {
+        nom = document.getElementById("nomPacient" + pacient.toString()).value.toString();
+        cognom = document.getElementById("cognomPacient" + pacient.toString()).value.toString();
+        nif = document.getElementById("NIFPacient" + pacient.toString()).value.toString();
+        malaltia = document.getElementById("malaltia" + pacient.toString()).value.toString();
+    
+        if (nom !== "" && cognom !== "" && malaltia !== "" && malaltia !== "") {
+          if (hospital !== null) {
+            hospital.ingressarPacient( new Pacient(nom, cognom, nif, malaltia));
+            console.log(hospital);
+          }
+        }
+      }
+
+      if(hospital.pacients){
+        console.log("si");
+      }else{
+        console.log("no");
+      }
+    
+      if (hospital !== null && (hospital.pacientsIngressats.length <= hospital.maximPacients)) {
+        eleID_divPacient.classList.toggle("d-none");
+        
+        // document.getElementById("nomHospitalGestio").innerHTML = hospital.nomHospital;
+    
+        for (var pacient = 0; pacient < hospital.pacientsIngressats.length; pacient++) {
+          document.getElementById("dadesGestio").innerHTML += ('<div class="row" id="dadesGestioPacient' + pacient.toString() + '">' +
+            '<div class="col mb-3">' +
+              '<label for="nomPacientGestio" class="font-weight-bold">Nom: </label>   <p id="nomPacientGestio' + pacient.toString() + '">' + hospital.pacientsIngressats[pacient].nom  + '</p>' +
+            '</div>' +
+            '<div class="col mb-3">' +
+              '<label for="cognomPacientGestio" class="font-weight-bold">Cognom: </label>  <p id="cognomPacientGestio' + pacient.toString() + '">' + hospital.pacientsIngressats[pacient].cognom  + '</p>' +
+            '</div>' +
+            '<div class="col mb-3">' +
+              '<label for="nifPacientGestio" class="font-weight-bold">NIF: </label>  <p id="nifPacientGestio' + pacient.toString() + '">' + hospital.pacientsIngressats[pacient].nif  + '</p>' +
+            '</div>' +
+            '<div class="col mb-3">' +
+              '<label for="malaltia" class="font-weight-bold">Malaltia: </label>  <p id="malaltiaGestio' + pacient.toString() + '">' + hospital.pacientsIngressats[pacient].malaltia  + '</p>' +
+            '</div>' +
+            '<div class="col mb-3">' +
+              '<button class="btn btn-success" onClick="gestioDonarDalta(' + pacient + ')">Donar d\'alta</button> <button class="btn btn-danger" onClick="gestioMorir(' + pacient + ')">Morir</button>' +
+            '<div class="col mb-3">' +
+          '</div>');
+        }
+        eleID_divGestio.classList.toggle("d-none");
+        // document.getElementById("divGestio").classList.remove("d-none");
+      }
+    }
+
+    function gestioDonarDalta(llitPacient) {
+      hospital.donarDaltaPacient(llitPacient);
+      document.getElementById("dadesGestioPacient" + llitPacient.toString()).remove();
+    
+      if (totsLlitsBuits())
+      dadesGestio.innerHTML = ('<p class="text-center">L\'Hospital ' + hospital.nom + ' no té cap pacient ingressat en aquests moments.</p>' +
+      '<div class="text-center">' +
+        '<button type="button" class="btn btn-primary mt-4" onClick="window.location.reload()">Tornar a començar</button>' +
+      '</div>');
+    }
+    
+    function gestioMorir(llitPacient) {
+      hospital.morirPacient(llitPacient);
+      document.getElementById("dadesGestioPacient" + llitPacient.toString()).remove();
+    
+      if (totsLlitsBuits())
+        dadesGestio.innerHTML = ('<p class="text-center">L\'Hospital ' + hospital.nom + ' no té cap pacient ingressat en aquests moments.</p>' +
+        '<div class="text-center">' +
+          '<button type="button" class="btn btn-primary mt-4" onClick="window.location.reload()">Tornar a començar</button>' +
+        '</div>');
+    }
+    
+    function totsLlitsBuits() {
+      var llitsBuits = true;
+      var llit = 0;
+    
+      while(llitsBuits && llit < hospital.pacientsIngressats.length) {
+        llitsBuits = Object.keys(hospital.pacientsIngressats[llit]).length === 0;
+        llit++;
+      }
+    
+      return llitsBuits;
+    }
+
+

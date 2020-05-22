@@ -15,7 +15,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
  PER MODAL -->
 
-
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
@@ -24,12 +23,15 @@
     <script src="./js/classes/Hospital.js"></script>
     <script src="./js/classes/Metge.js"></script>
     <script src="./js/classes/Pacient.js"></script>
+    <script src="./js/dadesMalalties.js"></script>
+
    
   </head>
   <body>
+<a href="interficies.html">Link interficies</a>
     <!-- INICI container -->
     <div class="container">
-      <h1  class="text-center mt-3 mb-3" >Aplicació gestió Sanitària</h1>
+      <h1 id="titol" class="text-center mt-3 mb-3" >Aplicació gestió Sanitària</h1>
       <!-- ==================================================================================== -->  
       <!-- INICI Missatge Modal -->
       <div class="modal fade" id="divEspaiModal">
@@ -72,12 +74,12 @@
               <!-- INICI eleID_h4TitolPanell -->
               <h4 class="text-center" id="h4TitolPanell">Panell de Gestió</h4> <!-- mt margin top = 5 -->
               <!-- FINAL eleID_h4TitolPanell -->
-            <button type="button" id="btnGestHospitals" class="btn btn-primary btn-block" onClick="mostraGestioHospital(this)">Hospital</button>
-            <button type="button" id="btnGestPacients" class="btn btn-primary btn-block"  onClick="mostraGestioPacients(this)">Pacients</button>
-            <button type="button" id="btnGestMalalties" class="btn btn-primary btn-block"  onClick="mostraGestioMalaties(this)">Malalties</button>
-            <button type="button" id="btnGestMetges" class="btn btn-primary btn-block"  onClick="mostraGestioMetges()">Metges</button>
+            <button type="button" id="btnGestHospitals" class="btn btn-primary btn-block" onclick="mostraGestioHospital(this)">Hospital</button>
+            <button type="button" id="btnGestPacients" class="btn btn-primary btn-block"  onclick="mostraGestioPacients(this)">Pacients</button>
+            <button type="button" id="btnGestMalalties" class="btn btn-primary btn-block"  onclick="mostraGestioMalaties(this)">Malalties</button>
+            <button type="button" id="btnGestMetges" class="btn btn-primary btn-block"  onclick="mostraGestioMetges()">Metges</button>
             <br>
-            <button type="button" id="btnGestAplicacio" class="btn btn-primary btn-block"  onClick="mostraGestioApp()">Control</button>
+            <button type="button" id="btnGestAplicacio" class="btn btn-primary btn-block"  onclick="mostraGestioApp()">Control</button>
             <!-- <button type="button" class="btn btn-primary  btn-block" data-toggle="modal" data-target="#espaiModal">Open modal</button> -->
         </div>
         <!-- FINAL COLUMNA 1 >md 02 < -- > bloc control equerre -->
@@ -124,7 +126,7 @@
             <!-- INICI botonsIntroHospital -->
             <div class="text-center" id="botonsIntroHospital">
               <hr style="border: 1px solid green; border-radius: 10px;">
-              <button type="button" class="btn btn-primary mt-4" onClick="crearHospital()">Crear</button>
+              <button type="button" class="btn btn-primary mt-4" onclick="crearHospital()">Crear</button>
               <!-- <button type="button" class="btn btn-primary mt-4" onClick="ocultaGestioHospital(this)">Torna</button> -->
             </div>
             <!-- FINAL botonsIntroHospital -->
@@ -133,13 +135,38 @@
           <!-- ------------------------------------------------------------------------------------ -->
           <!-- INICI divPacients -->
           <div class="w-100 mx-auto align-items-center border mt-8 mb-8 p-4 rounded shadow bg-white d-none" id="divPacient">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close" id="tancaDivPacient"><h3>&times;</h3></a>
              <!-- w-100  = width: 100% -->
             <h2 class="text-center">Pacients</h2>
             <p class="text-center">Introdueix les dades del pacients que vols ingressar:</p>
-            <div id="dadesPacient"></div>
+            <div id="dadesPacient">
+              <!--<div class="row" id="dadesGestioPacient">
+                <div class="col mb-3">
+                  <label for="nomPacientGestio" class="font-weight-bold">Nom: </label>
+                  <input type="text" id="nomPacient" name="nomPacient"  title="Introdueix el nom del Pacient."
+                  class="form-control" required minlength="1" maxlength="100">
+                </div>
+                <div class="col mb-3">
+                  <label for="cognomPacientGestio" class="font-weight-bold">Cognom: </label>
+                  <input type="text" id="cognomPacient" name="cognomPacient"  title="Introdueix el cognom del Pacient."
+                  class="form-control" required minlength="1" maxlength="100">
+                </div>
+                <div class="col mb-3">
+                  <label for="nifPacientGestio" class="font-weight-bold">NIF: </label>
+                  <input type="text" id="nifPacient" name="nifPacient"  title="Introdueix el NIF del Pacient."
+                  class="form-control" required minlength="1" maxlength="100">
+                </div>
+                <div class="col mb-3">
+                  <label for="malaltia" class="font-weight-bold">Malaltia: </label>
+                  <input type="text" id="malaltia" name="malaltia"  title="Introdueix la malaltia"
+                  class="form-control" required minlength="1" maxlength="100">
+                </div>
+
+              </div>-->
+            </div>
             <div class="text-center">
-              <button type="button" class="btn btn-primary mt-4" onClick="ingressarPacients()">Ingressar</button>
-              <button type="button" class="btn btn-primary mt-4" onClick="ocultaGestioPacients(this)">Torna</button>
+              <button type="button" class="btn btn-primary mt-4" onclick="ingressarPacients()">Ingressar</button>
+              <!--<button type="button" class="btn btn-primary mt-4" onclick="ocultaGestioPacients(this)">Torna</button>-->
             </div>
           </div>
           <!-- FINAL divPacients -->
@@ -159,9 +186,9 @@
             <h4  class="text-center mt-3 mb-3" >Control de l'aplicació</h4>
             <div class="form-row" id="formControls">
               <div class="text-center">
-                <button type="button" class="btn btn-primary mt-4" onClick="comprovacioInicial()" id="btnCheck">Check</button>
-                <button type="button" class="btn btn-primary mt-4" onClick="mostraNotFoud()" id="btnMostra404">Mostra error 404</button>
-                <button type="button" class="btn btn-primary mt-4" onClick="ocultaControls(this)">Torna</button>
+                <button type="button" class="btn btn-primary mt-4" onclick="comprovacioInicial()" id="btnCheck">Check</button>
+                <button type="button" class="btn btn-primary mt-4" onclick="mostraNotFoud()" id="btnMostra404">Mostra error 404</button>
+                <button type="button" class="btn btn-primary mt-4" onclick="ocultaControls(this)">Torna</button>
               </div>
             </div>
             <div class="form-row" id="formControls">
