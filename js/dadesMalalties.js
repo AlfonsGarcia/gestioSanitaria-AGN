@@ -26,7 +26,8 @@ function cargarMalalties(){
     'Tumor extraocular en la infància (Rabdomiosarcoma)',
     'Tumor intraocular en la infància (Retinoblastoma)','Tumors d’òrbita','Ventricle únic',
     'Virus del papil·loma humà (VPH)'];
-
+}
+/*
     const selectMalaties = document.getElementById("malaltia"); //seleccionem el select
 
     for (let index = 0; index < llistaMalalties.length; index++) {
@@ -38,3 +39,4 @@ function cargarMalalties(){
 }
 cargarMalalties();
 
+*/
